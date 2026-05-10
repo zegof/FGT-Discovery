@@ -1,0 +1,23 @@
+servers:
+# example:
+#   ip: example.com
+#   port: 25565
+#   name: Example
+# hub:
+#   ip: hub-ip.com
+#   port: 25565
+#   name: Hub
+
+strings:
+  transferring: "<green>Joined {{SERVER}}..."
+  transferred: "<gray>{{PLAYER}} joined {{SERVER}}"
+
+  config-reloaded: "<yellow>Config reloaded!"
+
+  server-not-exist: "<red>That server dosen't exist!"
+  server-config-incorrect: "<red>The config for this server is broken!"
+
+# Enables the /hub command and it's alias as an alias for "/join hub".
+enable-hub: false
+# Remove Join messages
+remove-join-msg: false
