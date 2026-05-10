@@ -1,0 +1,11 @@
+name: fgt-discovery
+description: $description
+prefix: RMC4
+version: '${version}'
+
+main: de.itsgraphax.fgtDiscovery.FgtDiscovery
+api-version: '26.1.2'
+load: POSTWORLD
+
+authors: [ ItsGraphax ]
+website: https://itsgraphax.de
