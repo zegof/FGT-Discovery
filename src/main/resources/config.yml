@@ -12,7 +12,7 @@ strings:
   transferring: "<green>Joining {{SERVER}}..."
   transferred: "<gray>{{PLAYER}} joined {{SERVER}}"
 
-  config-reloaded: "<yellow>Config reloaded!"
+  config-reloaded: "<yellow>Config reloaded! If you don't see your changes applied, restart the server."
 
   server-not-exist: "<red>That server dosen't exist!"
   server-config-incorrect: "<red>The config for this server is broken!"
