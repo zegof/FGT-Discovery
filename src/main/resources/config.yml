@@ -9,7 +9,7 @@ servers:
 #   name: Hub
 
 strings:
-  transferring: "<green>Joined {{SERVER}}..."
+  transferring: "<green>Joining {{SERVER}}..."
   transferred: "<gray>{{PLAYER}} joined {{SERVER}}"
 
   config-reloaded: "<yellow>Config reloaded!"
