@@ -13,5 +13,7 @@ The command to make an npc execute a command is: `/npc command add /join <server
 ## FAQ
 ### I get "Transfers are not enabled on this servers" when joining another server!
 This is a limitation with the transfer feature, as it uses the vanilla transferring that requires each server to have `allow-transfers` set to `true` in the `server.properties` as a security guard. (Which I tbh don't get, but it is what it is)
-### Why does this FAQ only have one real FAQ?
+### What are custom servers?
+Custom servers allow players to join their own servers over the hub, which is a thing I've noticed, as you for example want to use the hub to join all of your servers, but the server is kinda private and not everyone needs access to it. You add a custom server by using `/custom add <ip> <port> <slot>` and join it by using `/custom <slot>`.
+### Why does this FAQ only have two real FAQs?
 Because I just recently published this plugin and it should be pretty self-understandeable.
