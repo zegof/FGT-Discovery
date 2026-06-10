@@ -1,0 +1,44 @@
+package de.itsgraphax.fgtDiscovery.listeners;
+
+import de.itsgraphax.fgtDiscovery.FgtDiscovery;
+import de.itsgraphax.fgtDiscovery.util.HubUtil;
+import io.papermc.paper.event.player.PlayerItemFrameChangeEvent;
+import org.bukkit.Location;
+import org.bukkit.block.Block;
+import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+
+public class HubListener implements Listener {
+    @EventHandler
+    private void onInteract(PlayerInteractEvent event) {
+        Block interactedBlock = event.getClickedBlock();
+        boolean isInInteracteables = false;
+        if (interactedBlock != null) {
+            isInInteracteables = !FgtDiscovery.getInstance().getConfig().getStringList("hub.interacteable-blocks").contains(interactedBlock.getType().toString());
+        }
+        if (HubUtil.isAdventureEvent(event) && HubUtil.hubEnabled() && isInInteracteables) {
+            event.setCancelled(true);
+        }
+    }
+
+    @EventHandler
+    private void onItemFrame(PlayerItemFrameChangeEvent event) {
+        if (HubUtil.isAdventureEvent(event) && HubUtil.hubEnabled()) event.setCancelled(true);
+    }
+
+    @EventHandler
+    private void onJoin(PlayerJoinEvent event) {
+        if (HubUtil.isAdventureEvent(event) && HubUtil.hubEnabled()) {
+            FgtDiscovery plugin = FgtDiscovery.getInstance();
+            ConfigurationSection spawnLocConfig = FgtDiscovery.getInstance().getConfig();
+
+            event.getPlayer().teleport(new Location(plugin.getServer().getRespawnWorld(),
+                    spawnLocConfig.getInt("x", 0)+0.5,
+                    spawnLocConfig.getInt("y", 0)+0.5,
+                    spawnLocConfig.getInt("z", 0)+0.5));
+        }
+    }
+}

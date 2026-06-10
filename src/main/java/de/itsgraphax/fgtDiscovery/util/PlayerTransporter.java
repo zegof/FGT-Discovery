@@ -23,16 +23,24 @@ public class PlayerTransporter {
             player.sendRichMessage(config.getString("strings.server-config-incorrect", ""));
             return;
         }
+        ServerConnectionData connectionData = new ServerConnectionData(ip, port, name);
+
+        join(player, connectionData);
+    }
+
+    public static void join(Player player, ServerConnectionData connectionData) {
+        FgtDiscovery plugin = FgtDiscovery.getInstance();
+        FileConfiguration config = plugin.getConfig();
 
         player.sendRichMessage(config.getString("strings.transferring", "")
-                .replace("{{SERVER}}", name));
+                .replace("{{SERVER}}", connectionData.name()));
 
-        player.transfer(ip, port);
+        player.transfer(connectionData.ip(), connectionData.port());
 
         plugin.getServer().sendRichMessage(
                 config.getString("strings.transferred", "")
                         .replace("{{PLAYER}}", player.getName())
-                        .replace("{{SERVER}}", name)
+                        .replace("{{SERVER}}", connectionData.name())
         );
     }
 

@@ -6,7 +6,7 @@ servers:
 # hub:
 #   ip: hub-ip.com
 #   port: 25565
-#   name: Hub
+#   name: HubListener
 
 strings:
   transferring: "<green>Joining {{SERVER}}..."
@@ -17,7 +17,30 @@ strings:
   server-not-exist: "<red>That server dosen't exist!"
   server-config-incorrect: "<red>The config for this server is broken!"
 
+  custom-no-data: "<red>There is no server stored in this slot!"
+  custom-already-data: "<red>There is already a server stored in this slot!"
+  custom-deleted: "<green>The server under this slot has been deleted."
+  custom-added: "<green>Added a new custom server."
+
 # Enables the /hub command and it's alias as an alias for "/join hub".
 enable-hub: false
+# Teleport players to hub when the server is shutting down/restarting
+hub-on-stop: false
 # Remove Join messages
 remove-join-msg: false
+# HubUtil Mode
+# - Disables door, trapdoor and item frame changing
+# - Clears inventory
+# - Tp's player to 0 0 0, 0 0 on join
+hub:
+  enabled: false
+  spawn:
+    x: 0
+    y: 0
+    z: 0
+  interacteable-blocks:
+    - HEAVY_WEIGHTED_PRESSURE_PLATE
+    - OAK_PRESSURE_PLATE
+    - STONE_PRESSURE_PLATE
+    - OAK_BUTTON
+    - STONE_BUTTON

@@ -1,6 +1,6 @@
 name: fgt-discovery
 description: $description
-prefix: RMC4
+prefix: FGTDiscovery
 version: '${version}'
 
 main: de.itsgraphax.fgtDiscovery.FgtDiscovery
