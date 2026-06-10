@@ -11,7 +11,6 @@ import de.itsgraphax.fgtDiscovery.tick.HubTick;
 import de.itsgraphax.fgtDiscovery.util.Namespaces;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
-import net.kyori.adventure.text.logger.slf4j.ComponentLogger;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
@@ -56,7 +55,6 @@ public final class FgtDiscovery extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        logger = getComponentLogger();
         namespaces = new Namespaces();
 
         saveDefaultConfig();
