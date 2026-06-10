@@ -15,11 +15,11 @@ public class HubListener implements Listener {
     @EventHandler
     private void onInteract(PlayerInteractEvent event) {
         Block interactedBlock = event.getClickedBlock();
-        boolean isInInteracteables = false;
+        boolean isInInteractable = false;
         if (interactedBlock != null) {
-            isInInteracteables = !FgtDiscovery.getInstance().getConfig().getStringList("hub.interacteable-blocks").contains(interactedBlock.getType().toString());
+            isInInteractable = !FgtDiscovery.getInstance().getConfig().getStringList("hub.interactable-blocks").contains(interactedBlock.getType().toString());
         }
-        if (HubUtil.isAdventureEvent(event) && HubUtil.hubEnabled() && isInInteracteables) {
+        if (HubUtil.isAdventureEvent(event) && HubUtil.hubEnabled() && isInInteractable) {
             event.setCancelled(true);
         }
     }

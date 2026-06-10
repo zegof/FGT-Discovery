@@ -14,7 +14,7 @@ strings:
 
   config-reloaded: "<yellow>Config reloaded! If you don't see your changes applied, restart the server."
 
-  server-not-exist: "<red>That server dosen't exist!"
+  server-not-exist: "<red>That server doesn't exist!"
   server-config-incorrect: "<red>The config for this server is broken!"
 
   custom-no-data: "<red>There is no server stored in this slot!"
@@ -38,7 +38,7 @@ hub:
     x: 0
     y: 0
     z: 0
-  interacteable-blocks:
+  interactable-blocks:
     - HEAVY_WEIGHTED_PRESSURE_PLATE
     - OAK_PRESSURE_PLATE
     - STONE_PRESSURE_PLATE
