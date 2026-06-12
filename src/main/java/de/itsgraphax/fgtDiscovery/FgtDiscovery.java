@@ -1,9 +1,6 @@
 package de.itsgraphax.fgtDiscovery;
 
-import de.itsgraphax.fgtDiscovery.commands.CustomBrigadier;
-import de.itsgraphax.fgtDiscovery.commands.HubBrigadier;
-import de.itsgraphax.fgtDiscovery.commands.JoinBrigadier;
-import de.itsgraphax.fgtDiscovery.commands.MainBrigadier;
+import de.itsgraphax.fgtDiscovery.commands.*;
 import de.itsgraphax.fgtDiscovery.listeners.HubListener;
 import de.itsgraphax.fgtDiscovery.listeners.JoinQuitMessage;
 import de.itsgraphax.fgtDiscovery.listeners.StopListener;
@@ -22,7 +19,7 @@ public final class FgtDiscovery extends JavaPlugin {
 
     private final Namespaces namespaces = new Namespaces();
     private final RichText.RichConfigText richText = new RichText.RichConfigText(this);
-    private final PdcData pdcData = new PdcData();
+    private PdcData pdcData;
 
     private static void accept(BukkitTask ignoredTask) {
 
@@ -37,6 +34,7 @@ public final class FgtDiscovery extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
+        pdcData = new PdcData();
 
         saveDefaultConfig();
 
@@ -44,6 +42,7 @@ public final class FgtDiscovery extends JavaPlugin {
                 MainBrigadier::register,
                 JoinBrigadier::register,
                 CustomBrigadier::register,
+                PlayerListBrigadier::register,
                 c -> {
                     if (getConfig().getBoolean("enable-hub", false)) {
                         HubBrigadier.register(c);

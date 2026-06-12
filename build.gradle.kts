@@ -15,10 +15,9 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("net.strokkur.commands:annotations-paper:2.1.1")
 
-    annotationProcessor("net.strokkur.commands:processor-paper:2.1.1")
+    annotationProcessor("net.strokkur.commands:processor-paper:2.1.4")
 
-    compileOnly("de.itsgraphax:GrphxLib:1.3.0")
-    shadow("de.itsgraphax:GrphxLib:1.3.0")
+    implementation("de.itsgraphax:GrphxLib:1.4.0")
 }
 
 java {

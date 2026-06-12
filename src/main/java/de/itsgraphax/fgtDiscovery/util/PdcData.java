@@ -1,11 +1,12 @@
 package de.itsgraphax.fgtDiscovery.util;
 
 import de.itsgraphax.fgtDiscovery.FgtDiscovery;
+import de.itsgraphax.grphxLib.utils.PdcDataBase;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataHolder;
 import org.bukkit.persistence.PersistentDataType;
 
-public class PdcData extends de.itsgraphax.grphxLib.utils.PdcData {
+public class PdcData extends PdcDataBase {
     private final Namespaces namespaces = FgtDiscovery.getInstance().namespaces();
 
     public PdcData() {
