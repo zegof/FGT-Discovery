@@ -1,7 +1,6 @@
 package de.itsgraphax.fgtDiscovery.util;
 
 import de.itsgraphax.fgtDiscovery.FgtDiscovery;
-import de.itsgraphax.grphxLib.utils.RichText;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
