@@ -17,8 +17,8 @@ strings:
   server-not-exist: "<red>That server doesn't exist!"
   server-config-incorrect: "<red>The config for this server is broken!"
 
-  playerlist-list: "<green>On {{SERVER}} are currently {{PLAYERS}} players online:\n    {{ONLINE_PLAYERS}}"
-  playerlist-no-respond: "<red> The Server didn't responded to the status request"
+  playerlist-list: "<green>There are currently {{PLAYERS}} players online in {{SERVER}}:\n    {{ONLINE_PLAYERS}}"
+  playerlist-no-respond: "<red>The server didn't responded to the status request"
 
   custom-no-data: "<red>There is no server stored in this slot!"
   custom-already-data: "<red>There is already a server stored in this slot!"
