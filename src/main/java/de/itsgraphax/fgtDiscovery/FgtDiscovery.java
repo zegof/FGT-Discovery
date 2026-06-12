@@ -9,43 +9,25 @@ import de.itsgraphax.fgtDiscovery.listeners.JoinQuitMessage;
 import de.itsgraphax.fgtDiscovery.listeners.StopListener;
 import de.itsgraphax.fgtDiscovery.tick.HubTick;
 import de.itsgraphax.fgtDiscovery.util.Namespaces;
-import io.papermc.paper.command.brigadier.Commands;
-import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
-import org.bukkit.plugin.PluginManager;
+import de.itsgraphax.fgtDiscovery.util.PdcData;
+import de.itsgraphax.grphxLib.shorthands.OnEnable;
+import de.itsgraphax.grphxLib.utils.RichText;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
+
+import java.util.Set;
 
 public final class FgtDiscovery extends JavaPlugin {
     private static FgtDiscovery instance;
 
-    private Namespaces namespaces;
+    private final Namespaces namespaces = new Namespaces();
+    private final RichText.RichConfigText richText = new RichText.RichConfigText(this);
+    private final PdcData pdcData = new PdcData();
 
     private static void accept(BukkitTask ignoredTask) {
 
         HubTick.tick();
 
-    }
-
-    private void registerCommands() {
-        this.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS.newHandler(event -> {
-            Commands registrar = event.registrar();
-
-            MainBrigadier.register(registrar);
-            JoinBrigadier.register(registrar);
-            CustomBrigadier.register(registrar);
-
-            if (getConfig().getBoolean("enable-hub", false)) {
-                HubBrigadier.register(registrar);
-            }
-        }));
-    }
-
-    private void registerListeners() {
-        PluginManager pm = getServer().getPluginManager();
-
-        pm.registerEvents(new JoinQuitMessage(), this);
-        pm.registerEvents(new HubListener(), this);
-        pm.registerEvents(new StopListener(), this);
     }
 
     private void startTickTasks() {
@@ -55,12 +37,24 @@ public final class FgtDiscovery extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-        namespaces = new Namespaces();
 
         saveDefaultConfig();
 
-        registerCommands();
-        registerListeners();
+        OnEnable.registerCommands(Set.of(
+                MainBrigadier::register,
+                JoinBrigadier::register,
+                CustomBrigadier::register,
+                c -> {
+                    if (getConfig().getBoolean("enable-hub", false)) {
+                        HubBrigadier.register(c);
+                    }
+                }
+        ), this);
+        OnEnable.registerEvents(Set.of(
+                new JoinQuitMessage(),
+                new HubListener(),
+                new StopListener()
+        ), this);
         startTickTasks();
     }
 
@@ -68,8 +62,16 @@ public final class FgtDiscovery extends JavaPlugin {
         return instance;
     }
 
-    public Namespaces getNamespaces() {
+    public Namespaces namespaces() {
         return namespaces;
+    }
+
+    public RichText.RichConfigText richText() {
+        return richText;
+    }
+
+    public PdcData pdcData() {
+        return pdcData;
     }
 
     @Override

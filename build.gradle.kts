@@ -1,18 +1,24 @@
 plugins {
     id("java-library")
     id("xyz.jpenilla.run-paper") version "3.0.2"
+    id("com.gradleup.shadow") version "9.4.2"
 }
 
 repositories {
     mavenCentral()
     maven("https://repo.papermc.io/repository/maven-public/")
     maven("https://eldonexus.de/repository/maven-public")
+    maven("https://jitpack.io")
 }
 
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("net.strokkur.commands:annotations-paper:2.1.1")
+
     annotationProcessor("net.strokkur.commands:processor-paper:2.1.1")
+
+    compileOnly("de.itsgraphax:GrphxLib:1.3.0")
+    shadow("de.itsgraphax:GrphxLib:1.3.0")
 }
 
 java {

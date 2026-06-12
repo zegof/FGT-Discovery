@@ -1,6 +1,6 @@
 package de.itsgraphax.fgtDiscovery.commands;
 
-import de.itsgraphax.fgtDiscovery.FgtDiscovery;
+import de.itsgraphax.fgtDiscovery.HasPlugin;
 import jdk.jfr.Description;
 import net.strokkur.commands.Command;
 import net.strokkur.commands.Executes;
@@ -10,12 +10,10 @@ import org.bukkit.command.CommandSender;
 @Command("discovery")
 @Description("Operator Commands")
 @RequiresOP
-public class Main {
+public class Main extends HasPlugin {
     @Executes("reload")
     void reload(CommandSender sender) {
-        FgtDiscovery plugin = FgtDiscovery.getInstance();
-
-        sender.sendRichMessage(plugin.getConfig().getString("strings.config-reloaded", ""));
         plugin.reloadConfig();
+        sender.sendMessage(rt.fromConfig("config-reloaded"));
     }
 }
